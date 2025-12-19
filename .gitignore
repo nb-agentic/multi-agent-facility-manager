@@ -1,0 +1,140 @@
+# Environment
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+test_env/
+
+# ======================
+# IDE & Tool Configs
+# ======================
+.vscode/
+.idea/
+.cursorrules
+.kilocodemodes
+
+# Agent/AI tool directories
+.antigravity/
+.context/
+.kilocode/
+.kiro/
+.spec-workflow/
+
+# ======================
+# OS Files
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# Build & Distribution
+# ======================
+dist/
+build/
+*.egg-info/
+*.whl
+*.pkg
+*.dmg
+*.deb
+*.rpm
+*.msi
+
+# ======================
+# Test & Coverage
+# ======================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+test-results/
+coverage/
+.nyc_output/
+junit.xml
+test-results.xml
+coverage.xml
+
+# ======================
+# Logs & Reports
+# ======================
+*.log
+*.tar.gz
+backend.log
+memory-reports/
+performance-reports/
+demo-results/
+validation-results/
+
+# Security scan outputs
+trivy-results.sarif
+safety-report.json
+npm-audit-report.json
+
+# Linting reports
+flake8-report.txt
+mypy-report.txt
+
+# ======================
+# Artifacts & Generated
+# ======================
+artifacts/
+repomix-output.xml
+file_structure_map.txt
+ci-setup-report.txt
+
+# ======================
+# Temporary & Cache
+# ======================
+tmp/
+temp/
+.tmp/
+*.tmp
+*.temp
+.cache/
+.cachedir/
+
+# ======================
+# Database
+# ======================
+*.db
+*.sqlite
+*.sqlite3
+agent_memory.json
+
+# ======================
+# Package Managers (keep only uv)
+# ======================
+poetry.lock
+
+# ======================
+# Frontend
+# ======================
+frontend/dist/
+frontend/build/
+frontend/.vite/
+frontend/coverage/
+frontend/node_modules/
+
+# ======================
+# GitHub Actions
+# ======================
+.github/workflows/artifacts/
+.github/workflows/reports/
+
+# ======================
+# Misc non-essential files
+# ======================
+*.xml
+test.md
+test_frontend.html
+crewai_troubleshoot.py
+mcp_servers.json

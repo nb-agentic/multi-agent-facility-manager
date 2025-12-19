@@ -1,0 +1,132 @@
+[project]
+name = "intellicenter"
+version = "0.2.0"
+description = "Professional multi-agent facility management system"
+authors = [{ name = "NBSDEVApp", email = "tndprodev@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "crewai>=0.165.1,<0.166.0",
+    "redis>=6.4.0,<7.0.0",
+    "fastapi>=0.116.1,<0.117.0",
+    "uvicorn>=0.35.0,<0.36.0",
+    "influxdb-client>=1.49.0,<2.0.0",
+    "qdrant-client>=1.15.1,<2.0.0",
+    "python-dotenv>=1.1.1,<2.0.0",
+    "websockets>=12.0,<13.0",
+    # NEW: Professional dependencies
+    "pydantic>=2.10.0",
+    "structlog>=24.4.0",
+    "tenacity>=9.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.0",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "fakeredis>=2.23.0",
+    "mypy>=1.13.0",
+    "ruff>=0.8.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/intellicenter"]
+
+# ============================================
+# RUFF: Ultra-fast linter (replaces Black/Isort/Flake8)
+# ============================================
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes
+    "I",      # isort
+    "B",      # flake8-bugbear
+    "C4",     # flake8-comprehensions
+    "UP",     # pyupgrade
+    "ARG",    # flake8-unused-arguments
+    "SIM",    # flake8-simplify
+    "TCH",    # flake8-type-checking
+    "PTH",    # flake8-use-pathlib
+    "ERA",    # eradicate (commented code)
+    "PL",     # Pylint
+    "RUF",    # Ruff-specific rules
+]
+ignore = [
+    "PLR0913",  # Too many arguments (agents need many)
+    "PLR2004",  # Magic value comparisons
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["intellicenter"]
+
+# ============================================
+# MYPY: Static type checker (strict mode)
+# ============================================
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+show_error_codes = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = [
+    "crewai.*",
+    "redis.*",
+    "influxdb_client.*",
+    "qdrant_client.*",
+]
+ignore_missing_imports = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+# ============================================
+# PYTEST: Testing configuration
+# ============================================
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-ra -q --cov=src/intellicenter --cov-report=term-missing"
+markers = [
+    "e2e: marks tests as end-to-end",
+    "slow: marks tests as slow running",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+# ============================================
+# COVERAGE: Code coverage settings
+# ============================================
+[tool.coverage.run]
+source = ["src/intellicenter"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]

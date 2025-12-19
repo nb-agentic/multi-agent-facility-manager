@@ -1,0 +1,72 @@
+# Optimized Task Configuration for Facility Management Agents
+
+hvac_analysis:
+  description: >
+    Analyze temperature data and determine optimal cooling strategy.
+    Consider energy efficiency, thermal dynamics, and facility requirements.
+    Provide specific cooling level recommendation (low/medium/high/emergency).
+  expected_output: >
+    A JSON response with cooling_level, reasoning, energy_impact, and confidence_score.
+    Example: {"cooling_level": "medium", "reasoning": "Temperature within normal range", 
+    "energy_impact": "standard", "confidence_score": 0.85}
+  agent: hvac_specialist
+  context_variables:
+    - temperature_data
+    - zone_information
+    - energy_constraints
+
+power_analysis:
+  description: >
+    Analyze power consumption and cooling requirements to optimize energy distribution.
+    Consider load balancing, efficiency metrics, and cost implications.
+    Provide power optimization recommendations.
+  expected_output: >
+    A JSON response with power_optimization strategy, load_distribution, 
+    efficiency_rating, and cost_analysis.
+  agent: power_specialist
+  context_variables:
+    - cooling_decision
+    - current_load
+    - energy_prices
+
+security_analysis:
+  description: >
+    Assess security events and determine appropriate response actions.
+    Consider threat levels, access control policies, and compliance requirements.
+    Provide security recommendations and escalation procedures.
+  expected_output: >
+    A JSON response with threat_assessment, recommended_actions, 
+    escalation_level, and compliance_notes.
+  agent: security_specialist
+  context_variables:
+    - security_event
+    - access_logs
+    - threat_intelligence
+
+network_analysis:
+  description: >
+    Evaluate network performance and identify optimization opportunities.
+    Consider bandwidth utilization, latency, packet loss, and configuration issues.
+    Provide network optimization recommendations.
+  expected_output: >
+    A JSON response with network_status, performance_metrics, 
+    optimization_recommendations, and priority_actions.
+  agent: network_specialist
+  context_variables:
+    - network_metrics
+    - traffic_patterns
+    - configuration_data
+
+facility_coordination:
+  description: >
+    Coordinate facility operations and resolve inter-system conflicts.
+    Consider all agent inputs, system dependencies, and emergency protocols.
+    Provide comprehensive facility management directives.
+  expected_output: >
+    A JSON response with coordination_directive, system_priorities, 
+    conflict_resolutions, and emergency_status.
+  agent: facility_coordinator
+  context_variables:
+    - agent_reports
+    - system_status
+    - emergency_protocols

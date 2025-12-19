@@ -1,0 +1,84 @@
+# intellicenter/config/tasks.yaml
+hvac_analysis:
+  description: |
+    Analyze temperature data: {temperature_data}
+    
+    Consider these critical factors:
+    1. Current temperature vs optimal range (20-24°C)
+    2. Rate of temperature change and trends
+    3. Energy efficiency implications
+    4. Server performance requirements
+    5. Historical patterns and predictions
+    
+    Provide detailed analysis with:
+    - Recommended cooling level (low/medium/high/emergency)
+    - Clear reasoning for the decision
+    - Energy efficiency notes
+    - Risk assessment if no action taken
+    
+  expected_output: "JSON format with cooling_level, reasoning, energy_notes, and risk_level"
+
+power_analysis:
+  description: |
+    Analyze power consumption and optimization: {power_data}
+    
+    Evaluate:
+    1. Current power load vs total capacity
+    2. UPS battery status and backup readiness
+    3. Power distribution efficiency across zones
+    4. Cooling power requirements from HVAC decisions
+    5. Cost optimization opportunities
+    
+  expected_output: "JSON with power_status, efficiency_score, recommendations, and cost_analysis"
+security_analysis:
+  description: |
+    Analyze security event data: {security_data}
+    
+    Evaluate the following:
+    1. Event type (e.g., unauthorized_access, perimeter_breach, system_tampering)
+    2. Location and timestamp of the event
+    3. Severity level (low, medium, high, critical)
+    4. Correlation with other system events (e.g., power fluctuations, network outages)
+    
+    Provide a detailed security assessment with:
+    - threat_level: (informational/low/medium/high/critical)
+    - response_protocol: Recommended immediate actions (e.g., dispatch_guard, lock_down_zone, review_cameras)
+    - impact_assessment: Potential impact on facility operations
+    - reporting_requirements: Who needs to be notified
+    
+  expected_output: "JSON with threat_level, response_protocol, impact_assessment, and reporting_requirements"
+network_analysis:
+  description: |
+    Analyze network performance data: {network_data}
+    
+    Evaluate the following:
+    1. Bandwidth utilization and latency across key segments.
+    2. Packet loss and jitter rates.
+    3. Network hardware status (switches, routers).
+    4. Potential security anomalies (e.g., unusual traffic patterns, DDoS indicators).
+    
+    Provide a detailed network status report with:
+    - network_health: (optimal/stable/degraded/critical)
+    - performance_metrics: Key metrics like latency, bandwidth, packet loss.
+    - optimization_actions: Recommended actions (e.g., reroute_traffic, increase_bandwidth, isolate_segment).
+    - security_advisory: Any potential security concerns.
+    
+  expected_output: "JSON with network_health, performance_metrics, optimization_actions, and security_advisory"
+coordination_task:
+  description: |
+    Analyze the combined facility status report: {facility_status_report}.
+    The report contains summaries from HVAC, Power, Security, and Network agents.
+
+    Your primary goal is to identify inter-dependencies and potential cascading effects.
+    1. Review all agent assessments.
+    2. Identify any conflicting recommendations (e.g., HVAC needs more power, but Power agent wants to shed load).
+    3. Develop a coordinated action plan that prioritizes overall facility stability and safety.
+    4. The plan should specify actions for each agent if required.
+
+    Provide a high-level coordination directive with:
+    - overall_status: (green/yellow/red)
+    - priority_event: The most critical event to address.
+    - coordinated_plan: A list of clear, actionable directives for specific agents (e.g., "HVAC: Maintain current cooling. Power: Reroute non-essential load. Security: Increase monitoring in Zone B.").
+    - justification: A brief rationale for the plan.
+
+  expected_output: "JSON with overall_status, priority_event, coordinated_plan, and justification."

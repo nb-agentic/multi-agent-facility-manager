@@ -1,0 +1,268 @@
+.performance-panel {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.performance-panel h2 {
+  margin: 0 0 1.5rem 0;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.metric-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.metric-status {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.metric-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.metric-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.metric-description {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+}
+
+.events-section {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.events-section h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #007bff;
+  transition: background-color 0.2s ease;
+}
+
+.event-item:hover {
+  background-color: #e9ecef;
+}
+
+.event-type {
+  font-weight: 500;
+  color: #333;
+  flex: 1;
+}
+
+.event-count {
+  background-color: #007bff;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  min-width: 40px;
+  text-align: center;
+}
+
+.event-time {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+}
+
+.no-events {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+  font-style: italic;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .metric-card {
+    padding: 1rem;
+  }
+  
+  .metric-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .event-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .event-count {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .performance-panel {
+    padding: 0.75rem;
+    margin: 0.75rem;
+  }
+  
+  .events-section {
+    padding: 1rem;
+  }
+  
+  .metric-status {
+    font-size: 1.2rem;
+  }
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .metric-card,
+  .metric-fill,
+  .event-item {
+    transition: none;
+  }
+  
+  .metric-card:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.metric-card:focus,
+.event-item:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .metric-card,
+  .events-section {
+    border-width: 2px;
+  }
+  
+  .event-item {
+    border-left-width: 6px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .performance-panel {
+    background-color: #2d3748;
+    border-color: #4a5568;
+  }
+  
+  .performance-panel h2,
+  .events-section h3 {
+    color: #e2e8f0;
+  }
+  
+  .metric-card,
+  .events-section {
+    background-color: #374151;
+    border-color: #4a5568;
+  }
+  
+  .metric-title,
+  .event-type {
+    color: #e2e8f0;
+  }
+  
+  .metric-status {
+    color: #f7fafc;
+  }
+  
+  .metric-description,
+  .event-time {
+    color: #a0aec0;
+  }
+  
+  .metric-bar {
+    background-color: #4a5568;
+  }
+  
+  .event-item {
+    background-color: #4a5568;
+    border-left-color: #63b3ed;
+  }
+  
+  .event-item:hover {
+    background-color: #4a5568;
+  }
+  
+  .no-events {
+    background-color: #4a5568;
+    color: #a0aec0;
+  }
+}

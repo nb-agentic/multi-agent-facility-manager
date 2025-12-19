@@ -1,0 +1,232 @@
+.agent-status-container {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.agents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.agent-card {
+  border: 1px solid #e0e0e0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.agent-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.agent-icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.agent-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.agent-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.status-text {
+  font-weight: 500;
+  color: #666;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #6c757d;
+  transition: all 0.3s ease;
+}
+
+.agent-details {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.last-update {
+  font-style: italic;
+}
+
+/* Status-specific styles */
+.agent-card.active {
+  border-color: #28a745;
+  background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
+}
+
+.agent-card.active .status-indicator {
+  background-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+}
+
+.agent-card.warning {
+  border-color: #ffc107;
+  background: linear-gradient(135deg, #fffbf0 0%, #ffffff 100%);
+}
+
+.agent-card.warning .status-indicator {
+  background-color: #ffc107;
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+}
+
+.agent-card.error {
+  border-color: #dc3545;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+}
+
+.agent-card.error .status-indicator {
+  background-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+}
+
+/* Animations */
+@keyframes activePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
+  }
+}
+
+@keyframes warningShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-2px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes errorPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* Apply animations based on status */
+.agent-card.active {
+  animation: activePulse 2s ease-in-out infinite;
+}
+
+.agent-card.warning {
+  animation: warningShake 0.5s ease-in-out infinite;
+}
+
+.agent-card.error {
+  animation: errorPulse 1.5s ease-in-out infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .agents-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .agent-card {
+    padding: 1rem;
+  }
+  
+  .agent-card h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .agents-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .agent-status-container {
+    padding: 0.75rem;
+    margin: 0.75rem;
+  }
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .agent-card {
+    transition: none;
+  }
+  
+  .agent-card:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .agent-card.active,
+  .agent-card.warning,
+  .agent-card.error {
+    animation: none !important;
+  }
+  
+  .status-indicator {
+    transition: none;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.agent-card:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .agent-card {
+    border-width: 2px;
+  }
+  
+  .agent-card.active {
+    border-color: #006400;
+  }
+  
+  .agent-card.warning {
+    border-color: #cc9900;
+  }
+  
+  .agent-card.error {
+    border-color: #cc0000;
+  }
+}

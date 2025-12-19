@@ -1,0 +1,186 @@
+.connection-status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.connection-status__indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.connection-status__icon {
+  font-size: 16px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+.connection-status__label {
+  font-weight: 500;
+}
+
+/* Connected state */
+.connection-status--connected {
+  border-color: #4caf50;
+  background-color: #e8f5e8;
+}
+
+.connection-status--connected .connection-status__icon {
+  color: #4caf50;
+  animation: none;
+}
+
+.connection-status--connected .connection-status__label {
+  color: #2e7d32;
+}
+
+/* Reconnecting state */
+.connection-status--reconnecting {
+  border-color: #ff9800;
+  background-color: #fff3e0;
+}
+
+.connection-status--reconnecting .connection-status__icon {
+  color: #ff9800;
+  animation: spin 1s linear infinite;
+}
+
+.connection-status--reconnecting .connection-status__label {
+  color: #ef6c00;
+}
+
+/* Fallback state */
+.connection-status--fallback {
+  border-color: #2196f3;
+  background-color: #e3f2fd;
+}
+
+.connection-status--fallback .connection-status__icon {
+  color: #2196f3;
+  animation: pulse 1.5s infinite;
+}
+
+.connection-status--fallback .connection-status__label {
+  color: #1565c0;
+}
+
+/* Disconnected state */
+.connection-status--disconnected {
+  border-color: #f44336;
+  background-color: #ffebee;
+}
+
+.connection-status--disconnected .connection-status__icon {
+  color: #f44336;
+  animation: none;
+}
+
+.connection-status--disconnected .connection-status__label {
+  color: #c62828;
+}
+
+/* Progress bar for reconnecting */
+.connection-status__progress {
+  margin-top: 4px;
+}
+
+.connection-status__progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 152, 0, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.connection-status__progress-fill {
+  height: 100%;
+  background-color: #ff9800;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Error message */
+.connection-status__error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  background-color: rgba(244, 67, 54, 0.1);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.connection-status__error-icon {
+  color: #f44336;
+  font-size: 14px;
+}
+
+.connection-status__error-message {
+  color: #c62828;
+  flex: 1;
+}
+
+/* Fallback info */
+.connection-status__fallback-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background-color: rgba(33, 150, 243, 0.1);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.connection-status__fallback-icon {
+  color: #2196f3;
+  font-size: 12px;
+  animation: spin 2s linear infinite;
+}
+
+.connection-status__fallback-message {
+  color: #1565c0;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .connection-status {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  .connection-status__icon {
+    font-size: 14px;
+  }
+  
+  .connection-status__error,
+  .connection-status__fallback-info {
+    font-size: 11px;
+  }
+}
